@@ -1,0 +1,123 @@
+{
+    "name": "APIDisplay",
+    "uuid": "com.benhussenet.apidisplay",
+    "version": "1.0.0",
+    "author": "Ben Hussenet",
+    "entry": "backend/plugin.cjs",
+    "description": "Display data from a REST API",
+    "repo": "",
+    "sdk": {
+        "version": "1.0.0"
+    },
+    "software": {
+        "minimumVersion": "1.0.0"
+    },
+    "os": [
+        {
+            "platform": "mac",
+            "minimumVersion": "10.15"
+        },
+        {
+            "platform": "windows",
+            "minimumVersion": "10"
+        }
+    ],
+    "device": [
+        {
+            "name": "flexbar",
+            "version": "1.0.0"
+        }
+    ],
+    "configPage": "",
+    "keyLibrary": {
+        "title": "$PluginName",
+        "style": {
+            "icon": "mdi mdi-puzzle"
+        },
+        "children": [
+          {
+              "title": "$Counter.Title",
+              "tip": "$Counter.Tip",
+              "cid": "com.benhussenet.apidisplay.counter",
+              "config": {
+                  "keyType": "default",
+                  "clickable": true,
+                  "platform": [
+                      "windows",
+                      "mac"
+                  ]
+              },
+              "style": {
+                  "icon": "mdi mdi-gesture-tap-button",
+                  "width": 240
+              },
+              "data": {
+                  "rangeMin": "0",
+                  "rangeMax": "100"
+              }
+          },
+          {
+            "title": "$APIread.Title",
+            "tip": "$APIread.Tip",
+            "cid": "com.benhussenet.apidisplay.apiread",
+            "config": {
+                "keyType": "default",
+                "clickable": true,
+                "platform": [
+                    "windows",
+                    "mac"
+                ]
+            },
+            "style": {
+                "icon": "mdi mdi-gesture-tap-button",
+                "width": 240
+            },
+            "data": {
+                "apiUrl": "",
+                "authType": "none",
+                "username": "",
+                "password": "",
+                "token": "",
+                "valuePath": "$.total"
+            },
+            "options": {
+                "authType": [
+                    { "text": "None", "value": "none" },
+                    { "text": "Basic Auth", "value": "basic" },
+                    { "text": "Bearer Token", "value": "bearer" }
+                ]
+            }
+        }
+        ]
+    },
+    "local": {
+        "en": {
+            "PluginName": "APIDisplay",
+            "Counter": {
+                "Title": "Tap Counter",
+                "Tip": "Default keys with customizable drawable content",
+                "UI": {
+                    "RangeMin": "Minimum Value",
+                    "RangeMax": "Maximum Value"
+                }
+            },
+            "APIread": {
+                "Title": "API Read",
+                "Tip": "Read data from a REST API",
+                "UI": {
+                    "ApiUrl": "API URL",
+                    "AuthType": "Authentication Type",
+                    "Username": "Username",
+                    "Password": "Password",
+                    "Token": "Bearer Token",
+                    "ValuePath": "Value Path",
+                    "ValuePathHint": "JSON path to extract value from response (e.g., $.total, $.products[0].price)",
+                    "TestValuePath": "Test path with sample data",
+                    "TestSuccess": "Test successful! Value: {value}",
+                    "TestError": "Test failed: {error}",
+                    "TestErrorNoUrl": "Please enter an API URL first"
+                }
+            }
+        }
+    }
+}
